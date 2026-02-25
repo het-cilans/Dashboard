@@ -1,0 +1,130 @@
+.form-container {
+  background-color: #fff;
+  border-radius: 8px;
+  padding: 24px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  margin-bottom: 24px;
+}
+
+.form-container h2 {
+  margin: 0 0 20px 0;
+  color: #333;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.user-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.form-group label {
+  color: #555;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.form-group input {
+  padding: 10px 12px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 14px;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.form-group input:focus {
+  outline: none;
+  border-color: #4a90d9;
+  box-shadow: 0 0 0 3px rgba(74, 144, 217, 0.15);
+}
+
+.form-group input.error {
+  border-color: #dc3545;
+}
+
+.form-group input.error:focus {
+  box-shadow: 0 0 0 3px rgba(220, 53, 69, 0.15);
+}
+
+.form-group input:disabled {
+  background-color: #f5f5f5;
+  cursor: not-allowed;
+}
+
+.form-group input::placeholder {
+  color: #aaa;
+}
+
+.error-message {
+  color: #dc3545;
+  font-size: 12px;
+  margin-top: 2px;
+}
+
+.form-actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 8px;
+}
+
+.submit-button,
+.reset-button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s, opacity 0.2s;
+}
+
+.submit-button {
+  background-color: #4a90d9;
+  color: #fff;
+}
+
+.submit-button:hover:not(:disabled) {
+  background-color: #357abd;
+}
+
+.submit-button:disabled {
+  background-color: #a0c4e8;
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+.reset-button {
+  background-color: #f0f0f0;
+  color: #555;
+}
+
+.reset-button:hover:not(:disabled) {
+  background-color: #e0e0e0;
+}
+
+.reset-button:disabled {
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+@media (max-width: 480px) {
+  .form-container {
+    padding: 16px;
+  }
+  
+  .form-actions {
+    flex-direction: column;
+  }
+  
+  .submit-button,
+  .reset-button {
+    width: 100%;
+  }
+}
