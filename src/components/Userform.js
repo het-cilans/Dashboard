@@ -16,8 +16,11 @@ const UserForm = ({ onSubmit, isLoading }) => {
 
   useEffect(() => {
     const { isValid: valid, errors: validationErrors } = validateForm(formData);
+
+
     setIsValid(valid);
   }, [formData]);
+  
 
   const handleChange = (e) => {
     const { name, value } = e.target;
