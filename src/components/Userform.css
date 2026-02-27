@@ -86,27 +86,27 @@
 }
 
 .submit-button {
-  background-color: #4a90d9;
+  background-color:#555;
   color: #fff;
 }
 
 .submit-button:hover:not(:disabled) {
-  background-color: #357abd;
+  background-color:black;
 }
 
 .submit-button:disabled {
   background-color: #a0c4e8;
-  cursor: not-allowed;
+  /* cursor: not-allowed; */
   opacity: 0.7;
 }
 
 .reset-button {
-  background-color: #f0f0f0;
-  color: #555;
+  background-color:darkgray;
+  color: white;
 }
 
 .reset-button:hover:not(:disabled) {
-  background-color: #e0e0e0;
+  background-color: black;
 }
 
 .reset-button:disabled {
