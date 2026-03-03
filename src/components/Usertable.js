@@ -1,7 +1,7 @@
 import React from 'react';
 import './UserTable.css';
 
-const UserTable = ({ users, loading, error, onRetry }) => {
+const UserTable = ({ users, loading, error, onRetry ,onDelete }) => {
   if (loading) {
     return (
       <div className="table-container">
@@ -42,6 +42,7 @@ const UserTable = ({ users, loading, error, onRetry }) => {
             <th>Email</th>
             <th>Phone</th>
             <th>Company</th>
+            <th>Actions</th>
           </tr>
         </thead>
         <tbody>
@@ -51,6 +52,14 @@ const UserTable = ({ users, loading, error, onRetry }) => {
               <td>{user.email}</td>
               <td>{user.phone}</td>
               <td>{user.company?.name || 'N/A'}</td>
+              <td>
+                <button
+                  className="delete-button"
+                  onClick={() => onDelete && onDelete(user.id)}
+                >
+                  Delete
+                </button>
+              </td>
             </tr>
           ))}
         </tbody>

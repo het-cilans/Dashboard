@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useCallback } from 'react';
-import { getUsers, createUser } from '../services/api';
+import { getUsers, createUser, deleteUser } from '../services/api';
 import UserTable from '../components/Usertable';
 import UserForm from '../components/Userform';
 import './UserPage.css';
@@ -65,6 +65,20 @@ const UserPage = () => {
   const handleSearch = (e) => {
     setSearchTerm(e.target.value);
   };
+  const handleDeleteUser = async (userId) => {
+    const result = await deleteUser(userId);
+    
+    if (result.success) {
+      setUsers((prevUsers) => prevUsers.filter((user) => user.id !== userId));
+      setSuccessMessage('User deleted successfully!');
+      
+      setTimeout(() => {
+        setSuccessMessage('');
+      }, 3000);
+    } else {
+      setError(result.error);
+    }
+  };
 
   const filteredUsers = users.filter((user) => {
     const searchLower = searchTerm.toLowerCase();
@@ -116,6 +130,7 @@ const UserPage = () => {
             loading={loading}
             error={error && !users.length ? error : null}
             onRetry={handleRetry}
+            onDelete={handleDeleteUser}
           />
         </div>
       </div>

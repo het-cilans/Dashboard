@@ -33,5 +33,17 @@ export const createUser = async (userData) => {
     };
   }
 };
+export const deleteUser = async (userId) => {
+  try {
+    await api.delete(`/users/${userId}`);
+    return { success: true };
+  } catch (error) {
+    return {
+      success: false,
+      error: error.response?.data?.message || error.message || 'Failed to delete user',
+    };
+  }
+};
+
 
 export default api;
