@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { validateField, validateForm } from '../utils/Validation';
+import { validateField, validateForm } from '../../utils/Validation';
 import './Userform.css';
+
 const UserForm = ({ onSubmit, isLoading }) => {
+
   const initialFormState = {
     name: '',
     email: '',
@@ -15,11 +17,13 @@ const UserForm = ({ onSubmit, isLoading }) => {
   const [isValid, setIsValid] = useState(false);
 
   useEffect(() => {
-    const { isValid: valid, errors: validationErrors } = validateForm(formData);
+    const { isValid: valid } = validateForm(formData);
     setIsValid(valid);
   }, [formData]);
+
   const handleChange = (e) => {
     const { name, value } = e.target;
+
     setFormData((prev) => ({
       ...prev,
       [name]: value,
@@ -27,6 +31,7 @@ const UserForm = ({ onSubmit, isLoading }) => {
 
     if (touched[name]) {
       const error = validateField(name, value);
+
       setErrors((prev) => ({
         ...prev,
         [name]: error,
@@ -36,12 +41,14 @@ const UserForm = ({ onSubmit, isLoading }) => {
 
   const handleBlur = (e) => {
     const { name, value } = e.target;
+
     setTouched((prev) => ({
       ...prev,
       [name]: true,
     }));
 
     const error = validateField(name, value);
+
     setErrors((prev) => ({
       ...prev,
       [name]: error,
@@ -55,12 +62,14 @@ const UserForm = ({ onSubmit, isLoading }) => {
 
     if (!valid) {
       setErrors(validationErrors);
+
       setTouched({
         name: true,
         email: true,
         phone: true,
         companyName: true,
       });
+
       return;
     }
 
@@ -82,88 +91,109 @@ const UserForm = ({ onSubmit, isLoading }) => {
 
   return (
     <div className="form-container">
+
       <h2>Add New User</h2>
+
       <form onSubmit={handleSubmit} className="user-form">
+
+        {/* NAME */}
         <div className="form-group">
-          <label htmlFor="name">Name</label>
+          <label>Name</label>
+
           <input
             type="text"
-            id="name"
             name="name"
             value={formData.name}
             onChange={handleChange}
             onBlur={handleBlur}
             placeholder="Enter name"
-            className={errors.name && touched.name ? 'error' : ''}
+            className={errors.name && touched.name ? "error" : ""}
             disabled={isLoading}
           />
-          {errors.name && touched.name && (
-            <span className="error-message">{errors.name}</span>
-          )}
+
+          <div className="error-box">
+            {errors.name && touched.name && errors.name}
+          </div>
+
         </div>
 
+
+        {/* EMAIL */}
         <div className="form-group">
-          <label htmlFor="email">Email</label>
+          <label>Email</label>
+
           <input
             type="email"
-            id="email"
             name="email"
             value={formData.email}
             onChange={handleChange}
             onBlur={handleBlur}
             placeholder="Enter email"
-            className={errors.email && touched.email ? 'error' : ''}
+            className={errors.email && touched.email ? "error" : ""}
             disabled={isLoading}
           />
-          {errors.email && touched.email && (
-            <span className="error-message">{errors.email}</span>
-          )}
+
+          <div className="error-box">
+            {errors.email && touched.email && errors.email}
+          </div>
+
         </div>
 
+
+        {/* PHONE */}
         <div className="form-group">
-          <label htmlFor="phone">Phone</label>
+          <label>Phone</label>
+
           <input
             type="tel"
-            id="phone"
             name="phone"
             value={formData.phone}
             onChange={handleChange}
             onBlur={handleBlur}
             placeholder="Enter phone number"
-            className={errors.phone && touched.phone ? 'error' : ''}
+            className={errors.phone && touched.phone ? "error" : ""}
             disabled={isLoading}
           />
-          {errors.phone && touched.phone && (
-            <span className="error-message">{errors.phone}</span>
-          )}
+
+          <div className="error-box">
+            {errors.phone && touched.phone && errors.phone}
+          </div>
+
         </div>
 
+
+        {/* COMPANY */}
         <div className="form-group">
-          <label htmlFor="companyName">Company Name</label>
+          <label>Company Name</label>
+
           <input
             type="text"
-            id="companyName"
             name="companyName"
             value={formData.companyName}
             onChange={handleChange}
             onBlur={handleBlur}
             placeholder="Enter company name"
-            className={errors.companyName && touched.companyName ? 'error' : ''}
+            className={errors.companyName && touched.companyName ? "error" : ""}
             disabled={isLoading}
           />
-          {errors.companyName && touched.companyName && (
-            <span className="error-message">{errors.companyName}</span>
-          )}
+
+          <div className="error-box">
+            {errors.companyName && touched.companyName && errors.companyName}
+          </div>
+
         </div>
 
+
         <div className="form-actions">
+
           <button
             type="submit"
             className="submit-button"
             disabled={isLoading || !isValid}
           >
-            {isLoading ? 'Adding...' : 'Add User'}
+            {isLoading ? "Adding..." : "Add User"}
           </button>
+
           <button
             type="button"
             className="reset-button"
@@ -172,8 +202,11 @@ const UserForm = ({ onSubmit, isLoading }) => {
           >
             Reset
           </button>
+
         </div>
+
       </form>
+
     </div>
   );
 };

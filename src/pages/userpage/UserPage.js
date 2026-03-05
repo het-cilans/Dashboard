@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useCallback } from 'react';
-import { getUsers, createUser, deleteUser } from '../services/api';
-import UserTable from '../components/Usertable';
-import UserForm from '../components/Userform';
+import { getUsers, createUser, deleteUser } from '../../services/api';
+import UserTable from '../../components/usertable/Usertable';
+import UserForm from '../../components/userform/Userform';
 import './UserPage.css';
 
 const UserPage = () => {
@@ -102,15 +102,6 @@ const UserPage = () => {
           
           {successMessage && (
             <div className="success-message">{successMessage}</div>
-          )}
-          
-          {error && (
-            <div className="error-banner">
-              <span>{error}</span>
-              <button onClick={() => setError(null)} className="close-button">
-                ×
-              </button>
-            </div>
           )}
         </div>
 

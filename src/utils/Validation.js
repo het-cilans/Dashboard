@@ -4,7 +4,7 @@ export const validateEmail = (email) => {
 };
 
 export const validatePhone = (phone) => {
-  const phoneRegex = /^\d+$/;
+  const phoneRegex = /^\d{10}$/;
   return phoneRegex.test(phone.trim());
 };
 
@@ -34,7 +34,7 @@ export const validateField = (fieldName, value) => {
       if (!value || value.trim() === '') {
         error = 'Phone is required';
       } else if (!validatePhone(value)) {
-        error = 'Phone must contain numbers only';
+        error = 'Phone must be exactly 10 digits';
       }
       break;
     case 'companyName':

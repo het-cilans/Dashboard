@@ -1,7 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
-import UserForm from './components/Userform';
-import UserPage from './pages/UserPage';
+import UserForm from './components/userform/Userform';
+import UserPage from './pages/userpage/UserPage';
 
 function App() {
   return (
