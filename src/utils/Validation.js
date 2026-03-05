@@ -16,13 +16,22 @@ export const validateField = (fieldName, value) => {
   let error = '';
 
   switch (fieldName) {
-    case 'name':
+    case 'firstName':
       if (!value || value.trim() === '') {
-        error = 'Name is required';
-      } else if (value.trim().length < 3) {
-        error = 'Name must be at least 3 characters';
+        error = 'First Name is required';
+      } else if (value.trim().length < 2) {
+        error = 'First Name must be at least 2 characters';
       }
       break;
+
+    case 'lastName':
+      if (!value || value.trim() === '') {
+        error = 'Last Name is required';
+      } else if (value.trim().length < 2) {
+        error = 'Last Name must be at least 2 characters';
+      }
+      break;
+
     case 'email':
       if (!value || value.trim() === '') {
         error = 'Email is required';
@@ -30,6 +39,7 @@ export const validateField = (fieldName, value) => {
         error = 'Please enter a valid email address';
       }
       break;
+
     case 'phone':
       if (!value || value.trim() === '') {
         error = 'Phone is required';
@@ -37,11 +47,13 @@ export const validateField = (fieldName, value) => {
         error = 'Phone must be exactly 10 digits';
       }
       break;
+
     case 'companyName':
       if (!value || value.trim() === '') {
         error = 'Company Name is required';
       }
       break;
+
     default:
       break;
   }
@@ -60,6 +72,13 @@ export const validateForm = (formData) => {
       isValid = false;
     }
   });
+
+ 
+  const combinedName = `${formData.firstName || ''} ${formData.lastName || ''}`.trim();
+  if (!combinedName || combinedName.length < 3) {
+    errors.firstName = errors.firstName || 'Full Name must be at least 3 characters';
+    isValid = false;
+  }
 
   return { isValid, errors };
 };
