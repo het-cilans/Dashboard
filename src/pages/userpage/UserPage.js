@@ -103,15 +103,6 @@ const UserPage = () => {
           {successMessage && (
             <div className="success-message">{successMessage}</div>
           )}
-          
-          {error && (
-            <div className="error-banner">
-              <span>{error}</span>
-              <button onClick={() => setError(null)} className="close-button">
-                ×
-              </button>
-            </div>
-          )}
         </div>
 
         <div className="table-section">
